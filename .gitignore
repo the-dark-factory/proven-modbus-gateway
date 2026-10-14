@@ -1,0 +1,14 @@
+# Build and run outputs (the release download carries the binaries; the repository carries source only)
+/bin/
+src/*/obj/
+src/*/mb_*_main
+!src/*/mb_*_main.adb
+proofs/*/obj/
+test-equipment/build-linux/
+test-equipment/mb_plc_sim
+test-equipment/mb_demo_master
+build/*.o
+build/modbus-version.h
+demo/mb_plc_sim
+demo/mb_demo_master
+demo/run/

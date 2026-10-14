@@ -1,0 +1,54 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+-----------------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total        Flow                              Provers   Justified   Unproved
+-----------------------------------------------------------------------------------------------------------
+Data Dependencies                 .           .                                    .           .          .
+Flow Dependencies                 .           .                                    .           .          .
+Initialization                    .           .                                    .           .          .
+Non-Aliasing                      .           .                                    .           .          .
+Run-time Checks                   4           .                 4 (CVC5 33%, Z3 67%)           .          .
+Assertions                        .           .                                    .           .          .
+Functional Contracts              9           .    9 (CVC5 32%, Trivial 24%, Z3 43%)           .          .
+LSP Verification                  .           .                                    .           .          .
+Termination                      14          14                                    .           .          .
+Concurrency                       .           .                                    .           .          .
+-----------------------------------------------------------------------------------------------------------
+Total                            27    14 (52%)                             13 (48%)           .          .
+
+
+max steps used for successful proof: 2
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 3 units
+in unit lovelace_mb_frame_refusal_pkg, 4 subprograms and packages out of 4 analyzed
+  Lovelace_Mb_Frame_Refusal_Pkg at lovelace_mb_frame_refusal_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Frame_Refusal_Pkg.Closes_Tcp_Connection at lovelace_mb_frame_refusal_pkg.ads:32 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Frame_Refusal_Pkg.Frame_Answer at lovelace_mb_frame_refusal_pkg.ads:24 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Frame_Refusal_Pkg.Is_Refusal at lovelace_mb_frame_refusal_pkg.ads:21 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+in unit lovelace_mb_mbap_pkg, 9 subprograms and packages out of 9 analyzed
+  Lovelace_Mb_Mbap_Pkg at lovelace_mb_mbap_pkg.ads:3 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Mbap_Pkg.Big_Endian at lovelace_mb_mbap_pkg.ads:17 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (3 checks)
+  Lovelace_Mb_Mbap_Pkg.Header_Verdict at lovelace_mb_mbap_pkg.ads:42 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Mbap_Pkg.Length_Field at lovelace_mb_mbap_pkg.ads:28 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Mbap_Pkg.Length_Field_Ok at lovelace_mb_mbap_pkg.ads:37 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Mbap_Pkg.Protocol_Id at lovelace_mb_mbap_pkg.ads:25 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Mbap_Pkg.Protocol_Ok at lovelace_mb_mbap_pkg.ads:34 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Mbap_Pkg.Transaction_Id at lovelace_mb_mbap_pkg.ads:22 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Mbap_Pkg.Unit_Id at lovelace_mb_mbap_pkg.ads:31 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+in unit lovelace_mb_tcp_adu_pkg, 4 subprograms and packages out of 4 analyzed
+  Lovelace_Mb_Tcp_Adu_Pkg at lovelace_mb_tcp_adu_pkg.ads:4 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Tcp_Adu_Pkg.Adu_Verdict at lovelace_mb_tcp_adu_pkg.ads:24 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+  Lovelace_Mb_Tcp_Adu_Pkg.Bytes_To_Read at lovelace_mb_tcp_adu_pkg.ads:14 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+  Lovelace_Mb_Tcp_Adu_Pkg.Pdu_Length_Of at lovelace_mb_tcp_adu_pkg.ads:19 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)

@@ -1,0 +1,40 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+---------------------------------------------------------------------------------------------
+SPARK Analysis results        Total       Flow                 Provers   Justified   Unproved
+---------------------------------------------------------------------------------------------
+Data Dependencies                 .          .                       .           .          .
+Flow Dependencies                 .          .                       .           .          .
+Initialization                    .          .                       .           .          .
+Non-Aliasing                      .          .                       .           .          .
+Run-time Checks                   .          .                       .           .          .
+Assertions                        .          .                       .           .          .
+Functional Contracts              2          .    2 (CVC5 15%, Z3 85%)           .          .
+LSP Verification                  .          .                       .           .          .
+Termination                       4          4                       .           .          .
+Concurrency                       .          .                       .           .          .
+---------------------------------------------------------------------------------------------
+Total                             6    4 (67%)                 2 (33%)           .          .
+
+
+max steps used for successful proof: 1
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 1 unit
+in unit lovelace_mb_gate_refusal_pkg, 5 subprograms and packages out of 5 analyzed
+  Lovelace_Mb_Gate_Refusal_Pkg at lovelace_mb_gate_refusal_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Gate_Refusal_Pkg.Gate_Exception at lovelace_mb_gate_refusal_pkg.ads:39 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Gate_Refusal_Pkg.Is_Access_Refusal at lovelace_mb_gate_refusal_pkg.ads:33 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Gate_Refusal_Pkg.Is_Gate_Refusal at lovelace_mb_gate_refusal_pkg.ads:29 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Gate_Refusal_Pkg.Is_Value_Refusal at lovelace_mb_gate_refusal_pkg.ads:36 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)

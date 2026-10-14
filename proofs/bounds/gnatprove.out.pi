@@ -1,0 +1,41 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+----------------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total       Flow                              Provers   Justified   Unproved
+----------------------------------------------------------------------------------------------------------
+Data Dependencies                 .          .                                    .           .          .
+Flow Dependencies                 .          .                                    .           .          .
+Initialization                    .          .                                    .           .          .
+Non-Aliasing                      .          .                                    .           .          .
+Run-time Checks                   1          .                             1 (CVC5)           .          .
+Assertions                        .          .                                    .           .          .
+Functional Contracts              5          .    5 (CVC5 33%, Trivial 15%, Z3 52%)           .          .
+LSP Verification                  .          .                                    .           .          .
+Termination                       5          5                                    .           .          .
+Concurrency                       .          .                                    .           .          .
+----------------------------------------------------------------------------------------------------------
+Total                            11    5 (45%)                              6 (55%)           .          .
+
+
+max steps used for successful proof: 2
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 1 unit
+in unit lovelace_mb_bounds_pkg, 6 subprograms and packages out of 6 analyzed
+  Lovelace_Mb_Bounds_Pkg at lovelace_mb_bounds_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Bounds_Pkg.Capacities_Consistent at lovelace_mb_bounds_pkg.ads:51 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Bounds_Pkg.Length_Field_Within at lovelace_mb_bounds_pkg.ads:33 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+  Lovelace_Mb_Bounds_Pkg.Pdu_Within at lovelace_mb_bounds_pkg.ads:26 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Bounds_Pkg.Rtu_Adu_Within at lovelace_mb_bounds_pkg.ads:45 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Bounds_Pkg.Tcp_Adu_Within at lovelace_mb_bounds_pkg.ads:40 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)

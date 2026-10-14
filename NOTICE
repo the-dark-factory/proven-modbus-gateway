@@ -1,0 +1,26 @@
+proven-modbus-gateway
+Copyright (c) 2026 The Dark Factory Ltd
+
+SPDX-License-Identifier: MIT
+applies to everything in this repository EXCEPT the directory test-equipment/libmodbus/ (see below).
+The full licence text is in LICENSE.
+
+The Ada sources (the .ads and .adb files in src/ and proofs/) and the demo scripts (demo/*.bb) are kept byte-identical to the files the
+factory produced and proved, so that their recorded checksums and proofs still match. For that reason they do not
+carry per-file licence headers; this NOTICE and LICENSE cover them.
+
+Third-party components, kept separate and under their own licences:
+
+1. libmodbus 3.2.0 (commit a9b025d), https://github.com/stephane/libmodbus
+   Directory: test-equipment/libmodbus/
+   SPDX-License-Identifier: LGPL-2.1-or-later. Licence text: test-equipment/libmodbus/COPYING.LESSER
+   Used unmodified, and only as test equipment: it is linked into the simulated PLC (mb_plc_sim) and the scripted
+   test controller (mb_demo_master). It is never part of the gateway. The gateway's programs and proven cores contain
+   no libmodbus code; they were specified from the public Modbus specifications.
+
+2. babashka 1.12.196, https://github.com/babashka/babashka (release download only, as bin/bb; not in the repository)
+   SPDX-License-Identifier: EPL-1.0. Used unmodified, to run the demo scripts. The release carries babashka's own
+   LICENSE file (tag v1.12.196), verbatim, as bin/BABASHKA-LICENCE.txt.
+
+3. The GNAT Ada run-time library, statically linked into the gateway programs in the release download.
+   GPL-3.0-or-later WITH GCC-exception-3.1, which permits distributing compiled programs under the author's terms.

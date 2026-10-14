@@ -1,0 +1,39 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+----------------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total       Flow                              Provers   Justified   Unproved
+----------------------------------------------------------------------------------------------------------
+Data Dependencies                 .          .                                    .           .          .
+Flow Dependencies                 .          .                                    .           .          .
+Initialization                    .          .                                    .           .          .
+Non-Aliasing                      .          .                                    .           .          .
+Run-time Checks                   .          .                                    .           .          .
+Assertions                        .          .                                    .           .          .
+Functional Contracts              2          .    2 (CVC5 14%, Trivial 43%, Z3 43%)           .          .
+LSP Verification                  .          .                                    .           .          .
+Termination                       3          3                                    .           .          .
+Concurrency                       .          .                                    .           .          .
+----------------------------------------------------------------------------------------------------------
+Total                             5    3 (60%)                              2 (40%)           .          .
+
+
+max steps used for successful proof: 2
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 1 unit
+in unit lovelace_mb_frame_refusal_pkg, 4 subprograms and packages out of 4 analyzed
+  Lovelace_Mb_Frame_Refusal_Pkg at lovelace_mb_frame_refusal_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Frame_Refusal_Pkg.Closes_Tcp_Connection at lovelace_mb_frame_refusal_pkg.ads:32 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Frame_Refusal_Pkg.Frame_Answer at lovelace_mb_frame_refusal_pkg.ads:24 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Frame_Refusal_Pkg.Is_Refusal at lovelace_mb_frame_refusal_pkg.ads:21 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)

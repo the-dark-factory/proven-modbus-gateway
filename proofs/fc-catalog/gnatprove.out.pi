@@ -1,0 +1,41 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+---------------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total       Flow                             Provers   Justified   Unproved
+---------------------------------------------------------------------------------------------------------
+Data Dependencies                 .          .                                   .           .          .
+Flow Dependencies                 .          .                                   .           .          .
+Initialization                    .          .                                   .           .          .
+Non-Aliasing                      .          .                                   .           .          .
+Run-time Checks                   7          .                7 (CVC5 14%, Z3 86%)           .          .
+Assertions                        .          .                                   .           .          .
+Functional Contracts              5          .    5 (CVC5 27%, Trivial 9%, Z3 64%)           .          .
+LSP Verification                  .          .                                   .           .          .
+Termination                       5          5                                   .           .          .
+Concurrency                       .          .                                   .           .          .
+---------------------------------------------------------------------------------------------------------
+Total                            17    5 (29%)                            12 (71%)           .          .
+
+
+max steps used for successful proof: 2
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 1 unit
+in unit lovelace_mb_fc_catalog_pkg, 6 subprograms and packages out of 6 analyzed
+  Lovelace_Mb_Fc_Catalog_Pkg at lovelace_mb_fc_catalog_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Code_Of at lovelace_mb_fc_catalog_pkg.ads:33 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Codes_Round_Trip at lovelace_mb_fc_catalog_pkg.ads:69 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Function_Kind_Of at lovelace_mb_fc_catalog_pkg.ads:48 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Is_Exception_Byte at lovelace_mb_fc_catalog_pkg.ads:82 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Is_Write_Kind at lovelace_mb_fc_catalog_pkg.ads:73 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (7 checks)

@@ -1,0 +1,9 @@
+{
+  "round": "A",
+  "mode": "edge",
+  "unit": "Mb_Site_Loader_Main",
+  "source": "mb_site_loader_main.adb",
+  "proof_gate": "built-not-proved",
+  "compile_errors": 0,
+  "ts": "2026-10-03T06:25:55Z"
+}

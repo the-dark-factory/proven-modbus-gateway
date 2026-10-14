@@ -1,0 +1,3 @@
+# name	sha256 of comment-stripped source	proved in
+lovelace_mb_fc_catalog_pkg.ads	b68ddbee5cd35e0a2b51ce9ce6c880693787840d0f0dd28ed2455253738e8833	proofs/fc-catalog (ledger 625)
+lovelace_mb_policy_shape_pkg.ads	c5c7384b79c9b949c9b89e69781533fcf8d03bc522f921e130e002b77488b6d0	proofs/policy-shape (ledger 633)

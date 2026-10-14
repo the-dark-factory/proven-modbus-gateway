@@ -1,0 +1,32 @@
+# site-water-works.txt -- the lovelace-mb demo water works (R-MB-19) and its masters (R-MB-20).
+# A TEST FIXTURE site file for the W4 demo; loaded by mb_site_loader_main. One rule per line; "#" starts a comment.
+#   master   <peer IPv4> <gateway listen port> <slot 1..16>
+#   allow    <slot> <function code> ...
+#   writable <coil|register> <lo> <hi>
+#   limit    <register> <min> <max> [label ...]
+#   rate     <slot> <max writes> <window ms>
+#   sequence <coil|register> <addr> <value> followed-by <coil|register> <addr> <value> within <ms>
+# Any peer address/port not listed below is slot 0, which may do nothing.
+
+# ---- masters (R-MB-20: one host, so the gateway listen port tells them apart) ----
+master 127.0.0.1 5020 1        # SCADA
+master 127.0.0.1 5021 2        # historian
+
+# ---- function codes per slot ----
+allow 1 1 2 3 4 5 6 15 16      # SCADA: reads and writes
+allow 2 1 2 3 4                # historian: reads only
+
+# ---- what may be written (coils 0 pump RUN, 1 inlet valve OPEN, 2 backwash valve) ----
+writable coil 0 2
+writable register 100 102      # 100 chlorine setpoint, 101 flow setpoint, 102 pH alarm threshold
+# registers 110..119 are spares and are NOT writable
+
+# ---- value limits (register 102, the pH alarm threshold x100, has none) ----
+limit 100 10 80    chlorine dosing setpoint 0.01 mg/L
+limit 101 0 400    flow setpoint m3/h
+
+# ---- rate: SCADA at most 5 writes per 10 s ----
+rate 1 5 10000
+
+# ---- forbidden sequence: pump stop, then inlet valve open, within 30 s ----
+sequence coil 0 0 followed-by coil 1 1 within 30000

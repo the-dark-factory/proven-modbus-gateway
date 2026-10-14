@@ -1,0 +1,5 @@
+# name	sha256 of comment-stripped source	proved in
+lovelace_mb_bounds_pkg.ads	cbbfe3ef4d46c48d20ed513fb82925a5dd077be59646aa7f028dad18f29c5f5b	proofs/bounds (ledger 610)
+lovelace_mb_frame_refusal_pkg.ads	a2f3ea7e901d7b6c46580d17cff198833c95d2a535dfbe6e2bea8a5f72dbabae	proofs/frame-refusals (ledger 614)
+lovelace_mb_mbap_pkg.ads	7d627f38ac430edbf0fb3d66a261586db870359d0563e90f3c5cba26963c2f85	proofs/mbap-fields (ledger 617)
+lovelace_mb_tcp_adu_pkg.ads	e9325e5fdeff2246856ebf97eb04785181748ccc85e8fdd188c5931f3bfd158d	proofs/tcp-adu-length (ledger 619)

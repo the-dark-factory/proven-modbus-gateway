@@ -1,0 +1,41 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+----------------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total       Flow                              Provers   Justified   Unproved
+----------------------------------------------------------------------------------------------------------
+Data Dependencies                 .          .                                    .           .          .
+Flow Dependencies                 .          .                                    .           .          .
+Initialization                    .          .                                    .           .          .
+Non-Aliasing                      .          .                                    .           .          .
+Run-time Checks                   9          .                 9 (CVC5 78%, Z3 22%)           .          .
+Assertions                        .          .                                    .           .          .
+Functional Contracts              4          .    4 (CVC5 17%, Trivial 17%, Z3 67%)           .          .
+LSP Verification                  .          .                                    .           .          .
+Termination                       5          5                                    .           .          .
+Concurrency                       .          .                                    .           .          .
+----------------------------------------------------------------------------------------------------------
+Total                            18    5 (28%)                             13 (72%)           .          .
+
+
+max steps used for successful proof: 550
+
+============================
+Most difficult proved checks
+============================
+
+lovelace_mb_crc_step_pkg.ads:28:19: postcondition proved in max 4 seconds
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 1 unit
+in unit lovelace_mb_crc_step_pkg, 6 subprograms and packages out of 6 analyzed
+  Lovelace_Mb_Crc_Step_Pkg at lovelace_mb_crc_step_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Crc_Step_Pkg.Byte_Step at lovelace_mb_crc_step_pkg.ads:26 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (3 checks)
+  Lovelace_Mb_Crc_Step_Pkg.Check_Value at lovelace_mb_crc_step_pkg.ads:31 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Crc_Step_Pkg.Shift_Eight at lovelace_mb_crc_step_pkg.ads:22 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Crc_Step_Pkg.Shift_Once at lovelace_mb_crc_step_pkg.ads:17 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (8 checks)
+  Lovelace_Mb_Crc_Step_Pkg.Spec_Example_Value at lovelace_mb_crc_step_pkg.ads:38 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)

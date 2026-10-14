@@ -1,0 +1,9 @@
+{
+  "round": "A",
+  "mode": "edge",
+  "unit": "Mb_Plc_Forwarder_Main",
+  "source": "mb_plc_forwarder_main.adb",
+  "proof_gate": "built-not-proved",
+  "compile_errors": 0,
+  "ts": "2026-10-03T07:54:59Z"
+}

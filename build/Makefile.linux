@@ -1,0 +1,49 @@
+# Makefile.linux -- lovelace-mb W4 DEMO FIXTURES, Linux/aarch64 variant (Raspberry Pi 4, Debian 12, gcc 12.2.0).
+# Same programs, same libmodbus a9b025d sources compiled UNMODIFIED, same -std/-O2/-g/-Wall flags as the macOS
+# Makefile; only the compiler, the Apple-only -arch/-isysroot/-mmacosx-version-min flags and config.h differ.
+# Library objects and the Linux config.h live in ../oracle/build-linux/ (the macOS ../oracle/build/ is not used).
+#   make -f Makefile.linux            mb_plc_sim + mb_demo_master
+#   make -f Makefile.linux selftest   plc-sim on SELFTEST_PORT, master DIRECT at it, demo-check --direct
+#   make -f Makefile.linux clean
+
+MB      := $(HOME)/lovelace-modbus-pi/libmodbus-oracle
+OBLD    := ../oracle/build-linux
+CC      := gcc
+CFLAGS  := -std=gnu11 -O2 -g -Wall -Wno-unused-parameter -DHAVE_CONFIG_H -I$(OBLD) -I$(MB)/src
+LDFLAGS :=
+LIBSRC  := modbus modbus-data modbus-tcp modbus-rtu
+LIBOBJ  := $(LIBSRC:%=$(OBLD)/%.o)
+SELFTEST_PORT ?= 1502
+
+all: mb_plc_sim mb_demo_master
+
+$(OBLD)/modbus-version.h: $(MB)/src/modbus-version.h.in
+	sed -e 's/@LIBMODBUS_VERSION_MAJOR@/3/' -e 's/@LIBMODBUS_VERSION_MINOR@/2/' \
+	    -e 's/@LIBMODBUS_VERSION_MICRO@/0/' -e 's/@LIBMODBUS_VERSION@/3.2.0/g' $< > $@
+
+$(OBLD)/%.o: $(MB)/src/%.c $(OBLD)/config.h $(OBLD)/modbus-version.h
+	$(CC) $(CFLAGS) -include $(OBLD)/config.h -c $< -o $@
+
+build-linux/%.o: %.c $(OBLD)/modbus-version.h
+	@mkdir -p build-linux
+	$(CC) $(CFLAGS) -c $< -o $@
+
+mb_plc_sim: build-linux/mb_plc_sim.o $(LIBOBJ)
+	$(CC) $(LDFLAGS) $^ -o $@
+
+mb_demo_master: build-linux/mb_demo_master.o $(LIBOBJ)
+	$(CC) $(LDFLAGS) $^ -o $@
+
+selftest: all
+	@rm -f build-linux/selftest-plc-writes.tsv
+	@./mb_plc_sim --port $(SELFTEST_PORT) --log build-linux/selftest-plc-writes.tsv 2> build-linux/selftest-plc.err & echo $$! > build-linux/selftest-plc.pid
+	@sleep 1
+	@cd .. && demo/mb_demo_master --direct $(SELFTEST_PORT) --no-pause --script demo/script.txt \
+	    --out demo/build-linux/selftest-transcript.tsv 127.0.0.1; rc=$$?; \
+	  kill -TERM $$(cat demo/build-linux/selftest-plc.pid); sleep 1; cat demo/build-linux/selftest-plc.err; exit $$rc
+	bb demo-check.bb --direct build-linux/selftest-transcript.tsv build-linux/selftest-plc-writes.tsv script.txt
+
+clean:
+	rm -rf build-linux mb_plc_sim mb_demo_master transcript.tsv $(LIBOBJ) $(OBLD)/modbus-version.h
+
+.PHONY: all selftest clean

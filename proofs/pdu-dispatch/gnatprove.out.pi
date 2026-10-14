@@ -1,0 +1,106 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+------------------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total        Flow                               Provers   Justified   Unproved
+------------------------------------------------------------------------------------------------------------
+Data Dependencies                 .           .                                     .           .          .
+Flow Dependencies                 .           .                                     .           .          .
+Initialization                    .           .                                     .           .          .
+Non-Aliasing                      .           .                                     .           .          .
+Run-time Checks                  47           .                 47 (CVC5 14%, Z3 86%)           .          .
+Assertions                        .           .                                     .           .          .
+Functional Contracts             66           .    66 (CVC5 35%, Trivial 22%, Z3 44%)           .          .
+LSP Verification                  .           .                                     .           .          .
+Termination                      37          37                                     .           .          .
+Concurrency                       .           .                                     .           .          .
+------------------------------------------------------------------------------------------------------------
+Total                           150    37 (25%)                             113 (75%)           .          .
+
+
+max steps used for successful proof: 364
+
+============================
+Most difficult proved checks
+============================
+
+lovelace_mb_pdu_dispatch_pkg.ads:113:81: precondition proved in max 1 seconds
+lovelace_mb_pdu_dispatch_pkg.ads:108:68: precondition proved in max 1 seconds
+lovelace_mb_pdu_dispatch_pkg.ads:109:65: precondition proved in max 1 seconds
+lovelace_mb_pdu_dispatch_pkg.ads:103:68: precondition proved in max 1 seconds
+lovelace_mb_pdu_dispatch_pkg.ads:132:65: precondition proved in max 1 seconds
+lovelace_mb_pdu_dispatch_pkg.ads:131:68: precondition proved in max 1 seconds
+lovelace_mb_pdu_dispatch_pkg.ads:134:65: precondition proved in max 1 seconds
+lovelace_mb_pdu_dispatch_pkg.ads:104:65: precondition proved in max 1 seconds
+lovelace_mb_pdu_dispatch_pkg.ads:91:19: postcondition proved in max 1 seconds
+lovelace_mb_pdu_dispatch_pkg.ads:133:65: precondition proved in max 1 seconds
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 13 units
+in unit lovelace_mb_addr_span_pkg, 3 subprograms and packages out of 3 analyzed
+  Lovelace_Mb_Addr_Span_Pkg at lovelace_mb_addr_span_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Addr_Span_Pkg.Last_Address at lovelace_mb_addr_span_pkg.ads:19 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+  Lovelace_Mb_Addr_Span_Pkg.Span_Ok at lovelace_mb_addr_span_pkg.ads:14 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+in unit lovelace_mb_fc_catalog_pkg, 6 subprograms and packages out of 6 analyzed
+  Lovelace_Mb_Fc_Catalog_Pkg at lovelace_mb_fc_catalog_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Code_Of at lovelace_mb_fc_catalog_pkg.ads:33 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Codes_Round_Trip at lovelace_mb_fc_catalog_pkg.ads:69 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Function_Kind_Of at lovelace_mb_fc_catalog_pkg.ads:48 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Is_Exception_Byte at lovelace_mb_fc_catalog_pkg.ads:82 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Is_Write_Kind at lovelace_mb_fc_catalog_pkg.ads:73 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (7 checks)
+in unit lovelace_mb_pdu_dispatch_pkg, 9 subprograms and packages out of 9 analyzed
+  Lovelace_Mb_Pdu_Dispatch_Pkg at lovelace_mb_pdu_dispatch_pkg.ads:13 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Pdu_Dispatch_Pkg.Exception_Fc_Byte at lovelace_mb_pdu_dispatch_pkg.ads:153 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (4 checks)
+  Lovelace_Mb_Pdu_Dispatch_Pkg.Exception_Pdu at lovelace_mb_pdu_dispatch_pkg.ads:159 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Pdu_Dispatch_Pkg.Head_Width at lovelace_mb_pdu_dispatch_pkg.ads:33 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Pdu_Dispatch_Pkg.Kind_Of at lovelace_mb_pdu_dispatch_pkg.ads:30 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Pdu_Dispatch_Pkg.Refusal_Reply at lovelace_mb_pdu_dispatch_pkg.ads:170 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+  Lovelace_Mb_Pdu_Dispatch_Pkg.Request_Ok at lovelace_mb_pdu_dispatch_pkg.ads:142 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Pdu_Dispatch_Pkg.Request_Verdict at lovelace_mb_pdu_dispatch_pkg.ads:49 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (49 checks)
+  Lovelace_Mb_Pdu_Dispatch_Pkg.Short_Head at lovelace_mb_pdu_dispatch_pkg.ads:45 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+in unit lovelace_mb_pdu_fields_pkg, 7 subprograms and packages out of 7 analyzed
+  Lovelace_Mb_Pdu_Fields_Pkg at lovelace_mb_pdu_fields_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Bits_Bytes at lovelace_mb_pdu_fields_pkg.ads:34 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (4 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Byte_At at lovelace_mb_pdu_fields_pkg.ads:24 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Data_Present at lovelace_mb_pdu_fields_pkg.ads:46 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Field_Present at lovelace_mb_pdu_fields_pkg.ads:20 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Word_At at lovelace_mb_pdu_fields_pkg.ads:28 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (5 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Word_Bytes at lovelace_mb_pdu_fields_pkg.ads:40 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (3 checks)
+in unit lovelace_mb_pdu_refusal_pkg, 4 subprograms and packages out of 4 analyzed
+  Lovelace_Mb_Pdu_Refusal_Pkg at lovelace_mb_pdu_refusal_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Pdu_Refusal_Pkg.Exception_For at lovelace_mb_pdu_refusal_pkg.ads:34 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Pdu_Refusal_Pkg.Is_Pdu_Refusal at lovelace_mb_pdu_refusal_pkg.ads:28 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Pdu_Refusal_Pkg.Is_Request_Refusal at lovelace_mb_pdu_refusal_pkg.ads:31 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+in unit lovelace_mb_req_device_id_pkg, 2 subprograms and packages out of 2 analyzed
+  Lovelace_Mb_Req_Device_Id_Pkg at lovelace_mb_req_device_id_pkg.ads:4 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Req_Device_Id_Pkg.Device_Id_Verdict at lovelace_mb_req_device_id_pkg.ads:21 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+in unit lovelace_mb_req_mask_write_pkg, 6 subprograms and packages out of 6 analyzed
+  Lovelace_Mb_Req_Mask_Write_Pkg at lovelace_mb_req_mask_write_pkg.ads:4 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Req_Mask_Write_Pkg.From_Mask at lovelace_mb_req_mask_write_pkg.ads:34 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Req_Mask_Write_Pkg.Mask_Result at lovelace_mb_req_mask_write_pkg.ads:38 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Req_Mask_Write_Pkg.Mask_Write_Verdict at lovelace_mb_req_mask_write_pkg.ads:22 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Req_Mask_Write_Pkg.Spec_Example_Result at lovelace_mb_req_mask_write_pkg.ads:46 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Req_Mask_Write_Pkg.To_Mask at lovelace_mb_req_mask_write_pkg.ads:30 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+in unit lovelace_mb_req_read_bits_pkg, 2 subprograms and packages out of 2 analyzed
+  Lovelace_Mb_Req_Read_Bits_Pkg at lovelace_mb_req_read_bits_pkg.ads:5 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Req_Read_Bits_Pkg.Read_Bits_Verdict at lovelace_mb_req_read_bits_pkg.ads:18 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+in unit lovelace_mb_req_read_words_pkg, 2 subprograms and packages out of 2 analyzed
+  Lovelace_Mb_Req_Read_Words_Pkg at lovelace_mb_req_read_words_pkg.ads:5 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Req_Read_Words_Pkg.Read_Words_Verdict at lovelace_mb_req_read_words_pkg.ads:19 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+in unit lovelace_mb_req_read_write_pkg, 2 subprograms and packages out of 2 analyzed
+  Lovelace_Mb_Req_Read_Write_Pkg at lovelace_mb_req_read_write_pkg.ads:5 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Req_Read_Write_Pkg.Read_Write_Verdict at lovelace_mb_req_read_write_pkg.ads:21 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (4 checks)
+in unit lovelace_mb_req_write_coils_pkg, 2 subprograms and packages out of 2 analyzed
+  Lovelace_Mb_Req_Write_Coils_Pkg at lovelace_mb_req_write_coils_pkg.ads:5 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Req_Write_Coils_Pkg.Write_Coils_Verdict at lovelace_mb_req_write_coils_pkg.ads:21 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (7 checks)
+in unit lovelace_mb_req_write_registers_pkg, 2 subprograms and packages out of 2 analyzed
+  Lovelace_Mb_Req_Write_Registers_Pkg at lovelace_mb_req_write_registers_pkg.ads:5 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Req_Write_Registers_Pkg.Write_Registers_Verdict at lovelace_mb_req_write_registers_pkg.ads:20 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (4 checks)
+in unit lovelace_mb_req_write_single_pkg, 3 subprograms and packages out of 3 analyzed
+  Lovelace_Mb_Req_Write_Single_Pkg at lovelace_mb_req_write_single_pkg.ads:5 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Req_Write_Single_Pkg.Coil_On at lovelace_mb_req_write_single_pkg.ads:41 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Req_Write_Single_Pkg.Write_Single_Verdict at lovelace_mb_req_write_single_pkg.ads:19 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)

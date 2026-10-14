@@ -1,0 +1,51 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+---------------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total        Flow                            Provers   Justified   Unproved
+---------------------------------------------------------------------------------------------------------
+Data Dependencies                 .           .                                  .           .          .
+Flow Dependencies                 .           .                                  .           .          .
+Initialization                    .           .                                  .           .          .
+Non-Aliasing                      .           .                                  .           .          .
+Run-time Checks                  22           .               22 (CVC5 2%, Z3 98%)           .          .
+Assertions                        .           .                                  .           .          .
+Functional Contracts              6           .    6 (CVC5 9%, Trivial 9%, Z3 83%)           .          .
+LSP Verification                  .           .                                  .           .          .
+Termination                      13          13                                  .           .          .
+Concurrency                       .           .                                  .           .          .
+---------------------------------------------------------------------------------------------------------
+Total                            41    13 (32%)                           28 (68%)           .          .
+
+
+max steps used for successful proof: 2
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 2 units
+in unit lovelace_mb_fc_catalog_pkg, 6 subprograms and packages out of 6 analyzed
+  Lovelace_Mb_Fc_Catalog_Pkg at lovelace_mb_fc_catalog_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Code_Of at lovelace_mb_fc_catalog_pkg.ads:33 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Codes_Round_Trip at lovelace_mb_fc_catalog_pkg.ads:69 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Function_Kind_Of at lovelace_mb_fc_catalog_pkg.ads:48 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Is_Exception_Byte at lovelace_mb_fc_catalog_pkg.ads:82 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Fc_Catalog_Pkg.Is_Write_Kind at lovelace_mb_fc_catalog_pkg.ads:73 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (7 checks)
+in unit lovelace_mb_policy_shape_pkg, 9 subprograms and packages out of 9 analyzed
+  Lovelace_Mb_Policy_Shape_Pkg at lovelace_mb_policy_shape_pkg.ads:3 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Policy_Shape_Pkg.Limits_Distinct at lovelace_mb_policy_shape_pkg.ads:98 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (3 checks)
+  Lovelace_Mb_Policy_Shape_Pkg.Limits_Ordered at lovelace_mb_policy_shape_pkg.ads:95 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+  Lovelace_Mb_Policy_Shape_Pkg.Ranges_Ordered at lovelace_mb_policy_shape_pkg.ads:92 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+  Lovelace_Mb_Policy_Shape_Pkg.Rate_Rule_Ok at lovelace_mb_policy_shape_pkg.ads:88 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Policy_Shape_Pkg.Rates_Bounded at lovelace_mb_policy_shape_pkg.ads:102 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Policy_Shape_Pkg.Sequences_Timed at lovelace_mb_policy_shape_pkg.ads:105 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Policy_Shape_Pkg.Slot_Zero_Closed at lovelace_mb_policy_shape_pkg.ads:108 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Policy_Shape_Pkg.Valid_Table at lovelace_mb_policy_shape_pkg.ads:111 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (8 checks)

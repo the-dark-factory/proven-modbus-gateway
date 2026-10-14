@@ -1,0 +1,43 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+---------------------------------------------------------------------------------------------
+SPARK Analysis results        Total       Flow                 Provers   Justified   Unproved
+---------------------------------------------------------------------------------------------
+Data Dependencies                 .          .                       .           .          .
+Flow Dependencies                 .          .                       .           .          .
+Initialization                    .          .                       .           .          .
+Non-Aliasing                      .          .                       .           .          .
+Run-time Checks                   2          .    2 (CVC5 50%, Z3 50%)           .          .
+Assertions                        .          .                       .           .          .
+Functional Contracts              5          .    5 (CVC5 38%, Z3 63%)           .          .
+LSP Verification                  .          .                       .           .          .
+Termination                       7          7                       .           .          .
+Concurrency                       .          .                       .           .          .
+---------------------------------------------------------------------------------------------
+Total                            14    7 (50%)                 7 (50%)           .          .
+
+
+max steps used for successful proof: 1
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 1 unit
+in unit lovelace_mb_crc_wire_pkg, 8 subprograms and packages out of 8 analyzed
+  Lovelace_Mb_Crc_Wire_Pkg at lovelace_mb_crc_wire_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Crc_Wire_Pkg.Crc_Matches at lovelace_mb_crc_wire_pkg.ads:22 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Crc_Wire_Pkg.High_Byte at lovelace_mb_crc_wire_pkg.ads:14 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Crc_Wire_Pkg.Low_Byte at lovelace_mb_crc_wire_pkg.ads:11 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Crc_Wire_Pkg.Spec_Example_Matches at lovelace_mb_crc_wire_pkg.ads:36 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Crc_Wire_Pkg.Split_Rejoins at lovelace_mb_crc_wire_pkg.ads:26 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Crc_Wire_Pkg.Swapped_Matches at lovelace_mb_crc_wire_pkg.ads:31 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Crc_Wire_Pkg.Wire_Value at lovelace_mb_crc_wire_pkg.ads:17 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)

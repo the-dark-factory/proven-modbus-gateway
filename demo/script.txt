@@ -1,0 +1,48 @@
+# script.txt -- the lovelace-mb W4 demo script (TEST FIXTURE; R-MB-19 plant, R-MB-20 slots, R-MB-12 codes).
+# One step per line:   name | gateway port | request | expected outcome
+#   port     5020 = slot 1 SCADA (FC 1,2,3,4,5,6,15,16), 5021 = slot 2 historian (FC 1,2,3,4); "-" for a pause
+#   request  libmodbus call (unit id 1):  rb|rib|rr|rir ADDR N   wb ADDR 0|1   wr ADDR V   wbs ADDR b,b,..
+#                                         wrs ADDR v,v,..   mwr ADDR AND OR   (numbers decimal or 0x..)
+#            raw HEX   the whole MBAP ADU, sent byte for byte on a plain socket
+#            sleep MS  a pause (no request)
+#   expect   ok | ok v,v,.. (read values) | exc NN | silent (no reply; the gateway may also close) | - (pause)
+# Ordering: the SCADA slot passes at most 5 writes per 10 s (only PASSED writes count, R-MB-17). Section A+B+C pass
+# 4 writes, so nothing there trips the rate rule; the pause then empties the window before the burst (section D).
+# The forbidden-sequence window (30 s after pump stop) only forbids coil 1 := 1, which nothing after C asks for.
+
+# ---- A. allowed traffic (PASS) ------------------------------------------------------------------------------
+hist-read-flow           | 5021 | rir 0 1                                  | ok 200
+hist-read-setpoint       | 5021 | rr 100 1                                 | ok 50
+scada-write-setpoint-60  | 5020 | wr 100 60                                | ok
+scada-readback-60        | 5020 | rr 100 1                                 | ok 60
+scada-pump-start         | 5020 | wb 0 1                                   | ok
+
+# ---- B. refused by name (nothing may reach the PLC) ----------------------------------------------------------
+setpoint-95-above-limit  | 5020 | wr 100 95                                | exc 03
+setpoint-5-below-limit   | 5020 | wr 100 5                                 | exc 03
+fc16-multi-out-of-limit  | 5020 | wrs 100 90,150,700                       | exc 03
+write-spare-reg-115      | 5020 | wr 115 1234                              | exc 02
+historian-writes-coil-0  | 5021 | wb 0 0                                   | exc 01
+fc22-not-allowed-scada   | 5020 | mwr 100 0x00ff 0x0010                    | exc 01
+fc8-diagnostics          | 5020 | raw 0008 0000 0006 01 08 0000 1234       | exc 01
+fc43-mei-0d-canopen      | 5020 | raw 0009 0000 0005 01 2b 0d 00 00        | exc 01
+malformed-protocol-id-1  | 5020 | raw 000a 0001 0006 01 06 0064 004d       | silent
+malformed-length-768     | 5020 | raw 000b 0000 0300 01 06 0064 004e       | silent
+readback-after-refusals  | 5020 | rr 100 3                                 | ok 60,200,850
+
+# ---- C. forbidden sequence: pump stop, then inlet valve open within 30 s -------------------------------------
+scada-valve-shut         | 5020 | wb 1 0                                   | ok
+scada-pump-stop          | 5020 | wb 0 0                                   | ok
+valve-open-after-stop    | 5020 | wb 1 1                                   | exc 04
+coils-after-sequence     | 5020 | rb 0 3                                   | ok 0,0,0
+
+# ---- D. rate: empty the 10 s window, then 6 setpoint writes back to back (the 6th is over 5 per 10 s) --------
+pause-rate-window        | -    | sleep 10500                              | -
+burst-1                  | 5020 | wr 100 21                                | ok
+burst-2                  | 5020 | wr 100 22                                | ok
+burst-3                  | 5020 | wr 100 23                                | ok
+burst-4                  | 5020 | wr 100 24                                | ok
+burst-5                  | 5020 | wr 100 25                                | ok
+burst-6-rate-exceeded    | 5020 | wr 100 26                                | exc 06
+final-setpoint           | 5021 | rr 100 1                                 | ok 25
+final-flow-pump-stopped  | 5021 | rir 0 1                                  | ok 0

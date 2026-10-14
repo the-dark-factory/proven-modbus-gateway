@@ -1,0 +1,41 @@
+#!./bin/bb
+;; SPDX-License-Identifier: MIT
+;; Copyright (c) 2026 The Dark Factory Ltd
+;;
+;; run-demo -- one-command launcher for the proven Modbus gateway demo (Raspberry Pi, 64-bit Linux).
+;;
+;;   cd lovelace-modbus-demo-pi-aarch64-2026-10-14
+;;   ./run-demo
+;;
+;; (From any other directory:  <folder>/bin/bb <folder>/run-demo)
+;;
+;; It runs the demo from the unpacked release folder: no install, no sudo, no network. It uses only the files in that
+;; folder (bin/bb, demo/, src/, test-equipment/) and the loopback ports 1502, 5020, 5021 and 5029.
+;; It judges nothing itself. It starts demo/run-demo.bb (unchanged from the factory) with
+;;   MB_FACTORY = <folder>/src       where run-demo.bb finds the five gateway programs
+;;   PATH       = <folder>/bin first  so run-demo.bb finds the bundled babashka for its checker
+;; and passes its output and exit code straight through:
+;;   0 = all 29 steps PASS, 1 = the checker found a failure, 3 = the demo could not be set up (e.g. a port in use).
+(require '[babashka.fs :as fs]
+         '[babashka.process :refer [shell]])
+
+(when (seq *command-line-args*)
+  (binding [*out* *err*] (println "usage: ./run-demo   (no arguments)"))
+  (System/exit 2))
+
+(def root (str (fs/parent (fs/normalize (fs/absolutize *file*)))))
+(def os (System/getProperty "os.name"))
+(def arch (System/getProperty "os.arch"))
+
+(when-not (and (= os "Linux") (= arch "aarch64"))
+  (binding [*out* *err*]
+    (println (str "This package is built for 64-bit ARM Linux (Raspberry Pi 4/5, 64-bit Raspberry Pi OS). "
+                  "This machine reports " os " / " arch ".")))
+  (System/exit 3))
+
+(def env {"MB_FACTORY" (str root "/src")
+          "PATH" (str root "/bin:" (or (System/getenv "PATH") "/usr/bin:/bin"))})
+
+(let [r (shell {:continue true :extra-env env :out :inherit :err :inherit}
+               (str root "/bin/bb") (str root "/demo/run-demo.bb"))]
+  (System/exit (:exit r)))

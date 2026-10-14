@@ -1,0 +1,42 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+---------------------------------------------------------------------------------------------
+SPARK Analysis results        Total       Flow                 Provers   Justified   Unproved
+---------------------------------------------------------------------------------------------
+Data Dependencies                 .          .                       .           .          .
+Flow Dependencies                 .          .                       .           .          .
+Initialization                    .          .                       .           .          .
+Non-Aliasing                      .          .                       .           .          .
+Run-time Checks                   9          .     9 (CVC5 8%, Z3 92%)           .          .
+Assertions                        .          .                       .           .          .
+Functional Contracts              5          .    5 (CVC5 25%, Z3 75%)           .          .
+LSP Verification                  .          .                       .           .          .
+Termination                       6          6                       .           .          .
+Concurrency                       .          .                       .           .          .
+---------------------------------------------------------------------------------------------
+Total                            20    6 (30%)                14 (70%)           .          .
+
+
+max steps used for successful proof: 1
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 1 unit
+in unit lovelace_mb_pdu_fields_pkg, 7 subprograms and packages out of 7 analyzed
+  Lovelace_Mb_Pdu_Fields_Pkg at lovelace_mb_pdu_fields_pkg.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Bits_Bytes at lovelace_mb_pdu_fields_pkg.ads:34 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (4 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Byte_At at lovelace_mb_pdu_fields_pkg.ads:24 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Data_Present at lovelace_mb_pdu_fields_pkg.ads:46 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Field_Present at lovelace_mb_pdu_fields_pkg.ads:20 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Word_At at lovelace_mb_pdu_fields_pkg.ads:28 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (5 checks)
+  Lovelace_Mb_Pdu_Fields_Pkg.Word_Bytes at lovelace_mb_pdu_fields_pkg.ads:40 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (3 checks)
